@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hermes Bridge</string>
+    <string name="service_notification">Hermes Notification Listener</string>
+    <string name="service_accessibility">Hermes Accessibility Bridge</string>
+    <string name="accessibility_service_description">Allows Hermes Bridge to read screen content and perform touch interactions on your behalf.</string>
+    <string name="accessibility_service_summary">Screen reading and touch control</string>
+    <string name="notification_service_description">Allows Hermes Bridge to read and forward notifications to your Hermes Agent.</string>
+    <string name="notification_service_summary">Notification monitoring</string>
+</resources>

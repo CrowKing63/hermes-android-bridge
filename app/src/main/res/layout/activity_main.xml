@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.MainActivity">
+
+    <!-- Status Indicator + Text -->
+    <LinearLayout
+        android:id="@+id/statusRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp">
+
+        <ImageView
+            android:id="@+id/statusIndicator"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_circle"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disconnected"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Device Info Label -->
+    <TextView
+        android:id="@+id/deviceInfoLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#888888"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/statusRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        tools:text="Device: xxx | ID: android_xxxxxxxx" />
+
+    <!-- Server URL Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/serverInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="WebSocket Server URL"
+        app:layout_constraintTop_toBottomOf="@id/deviceInfoLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/serverInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            android:text="ws://192.168.1.100:8765/bridge" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Connect / Disconnect Buttons -->
+    <LinearLayout
+        android:id="@+id/buttonRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/serverInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/connectButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Connect" />
+
+        <Button
+            android:id="@+id/disconnectButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Disconnect"
+            style="?attr/materialButtonOutlinedStyle" />
+    </LinearLayout>
+
+    <!-- Permissions Section -->
+    <TextView
+        android:id="@+id/permissionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Required Permissions"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/buttonRow"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp" />
+
+    <Button
+        android:id="@+id/permissionNotificationButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Notification Access"
+        app:layout_constraintTop_toBottomOf="@id/permissionLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        style="?attr/materialButtonOutlinedStyle" />
+
+    <Button
+        android:id="@+id/permissionAccessibilityButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Accessibility Service"
+        app:layout_constraintTop_toBottomOf="@id/permissionNotificationButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        style="?attr/materialButtonOutlinedStyle" />
+
+    <Button
+        android:id="@+id/permissionBatteryButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Disable Battery Optimization"
+        app:layout_constraintTop_toBottomOf="@id/permissionAccessibilityButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        style="?attr/materialButtonOutlinedStyle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
