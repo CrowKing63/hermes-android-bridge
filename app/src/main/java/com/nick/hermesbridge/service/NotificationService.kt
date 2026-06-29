@@ -28,11 +28,24 @@ class NotificationService : NotificationListenerService() {
 
     override fun onListenerConnected() {
         super.onListenerConnected()
-        Log.i(TAG, "NotificationListener connected. Active notifications: ${activeNotifications.size}")
+        Log.i(TAG, "NotificationListener connected")
         // Re-populate cache with currently active notifications
         try {
             activeNotifications.clear()
-            activeNotifications.forEach { (key, sbn) -> }
+            val active = activeNotifications()
+            for (sbn in active) {
+                val notification = Notification(
+                    key = sbn.key,
+                    packageName = sbn.packageName,
+                    appName = getAppName(sbn.packageName),
+                    title = sbn.notification?.extras?.getCharSequence("android.title")?.toString() ?: "",
+                    text = sbn.notification?.extras?.getCharSequence("android.text")?.toString() ?: "",
+                    postedAt = sbn.postTime,
+                    isClearable = sbn.isClearable
+                )
+                activeNotifications[sbn.key] = notification
+            }
+            Log.i(TAG, "Cached ${activeNotifications.size} active notifications")
         } catch (e: Exception) {
             Log.w(TAG, "Could not enumerate active notifications: ${e.message}")
         }

@@ -195,7 +195,7 @@ class AccessibilityBridge : AccessibilityService() {
     /**
      * Perform global action (BACK, HOME, RECENTS, etc.)
      */
-    fun performGlobalAction(action: Int): Boolean {
+    fun doGlobalAction(action: Int): Boolean {
         val result = performGlobalAction(action)
         Log.d(TAG, "Global action $action result=$result")
         return result
